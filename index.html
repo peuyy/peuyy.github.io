@@ -1,0 +1,489 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perri - Solution Consultant</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@500;600;700&amp;display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4A9D8F',
+                        secondary: '#E8836B',
+                        dark: '#2D2D2D',
+                        light: '#F7F8FA',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 4px 20px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow-sm {
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            }
+            .transition-all-300 {
+                transition: all 0.3s ease;
+            }
+            .scroll-smooth {
+                scroll-behavior: smooth;
+            }
+        }
+
+        /* Custom Styles */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #4A9D8F;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+    </style>
+</head>
+<body class="font-sans text-dark bg-white">
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 right-0 bg-white bg-opacity-95 shadow-sm z-50 transition-all duration-300">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-primary" style="font-style: normal;">PJ</a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link active font-medium">Home</a>
+                <a href="#career" class="nav-link font-medium">Career</a>
+                <a href="#tools" class="nav-link font-medium">Tools</a>
+                <a href="#exploring" class="nav-link font-medium">Exploring</a>
+                <a href="#insights" class="nav-link font-medium">Insights</a>
+                <a href="#contact" class="nav-link font-medium">Contact</a>
+            </div>
+            
+            <!-- Mobile Navigation Toggle -->
+            <button id="mobile-menu-toggle" class="md:hidden text-dark focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </nav>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white shadow-md hidden">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#home" class="mobile-nav-link py-2 font-medium">Home</a>
+                <a href="#career" class="mobile-nav-link py-2 font-medium">Career</a>
+                <a href="#tools" class="mobile-nav-link py-2 font-medium">Tools</a>
+                <a href="#exploring" class="mobile-nav-link py-2 font-medium">Exploring</a>
+                <a href="#insights" class="mobile-nav-link py-2 font-medium">Insights</a>
+                <a href="#contact" class="mobile-nav-link py-2 font-medium">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen pt-24 pb-16 md:pt-32 md:pb-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-8 md:mb-0 fade-in">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-4">Hi I'm Perri</h1>
+                    <p class="text-xl md:text-2xl text-primary font-medium mb-6">Solution Consultant bridging data products and real business outcomes</p>
+                    <p class="text-lg mb-4">I help enterprise clients cut through complexity and see the clear value in data solutions.</p>
+                    <p class="text-lg">With a background in SaaS data products and analytical consulting, I connect technical capabilities to the decisions that actually matter to clients.</p>
+                </div>
+                <div class="md:w-2/5 fade-in">
+                    <img src="https://cdn.jsdelivr.net/gh/peuyy/my-image-hosting@main/pj%20profile%20design.png" alt="Perri" class="rounded-xl w-full max-w-md h-auto object-cover mx-auto shadow-lg" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; box-shadow: none;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Section -->
+    <section id="career" class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold font-heading mb-12 text-center fade-in">Career</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Future Direction Card (Left, Narrow) -->
+                <div class="card bg-white rounded-xl shadow-card p-6 fade-in border-2 border-dashed border-primary md:col-span-1">
+                    <div class="flex items-center justify-center mb-4">
+                        <i class="fa fa-rocket text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-center">Future Direction</h3>
+                    <h4 class="text-primary font-medium mb-3 text-center">OEPN FOR WORK</h4>
+                    <p class="mb-2">Seeking opportunities in presales or solution consulting roles in SaaS or data intelligence, where clear communication and genuine curiosity are what make the difference.</p>
+                    <p>Passionate about collaborating with sales, product, and customer success closely — and where there's room to grow both technically and commercially.</p>
+                </div>
+                
+                <!-- Past Experience Cards (Right, Wide, Stacked) -->
+<div class="md:col-span-3 space-y-8">
+    <!-- Career Card 1 -->
+    <div class="card bg-white rounded-xl shadow-card p-6 fade-in">
+        <h3 class="text-xl font-bold mb-2">Consultant, Product Sales & Solutions</h3>
+        <h4 class="text-primary font-medium mb-3">Dun & Bradstreet</h4>
+        <p class="mb-2">Led presales engagements and product demonstrations for enterprise clients in the SaaS and data intelligence space.</p>
+        <p class="mb-4">I translate SaaS & API products into concrete use cases across CRM enrichment, supplier risk, and master data management. I've contributed to roughly ¥2M in annual sales by connecting technical capabilities to outcomes clients genuinely care about.</p>
+        <!-- Skill Tags -->
+        <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">Presales & Solution Consulting</span>
+            <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">SaaS</span>
+            <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">Data Products</span>
+            <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">B2B Enterprise</span>
+        </div>
+    </div>
+    
+    <!-- Career Card 2 -->
+    <div class="card bg-white rounded-xl shadow-card p-6 fade-in">
+        <h3 class="text-xl font-bold mb-2">Consultant, Industrial & Economic Development</h3>
+        <h4 class="text-primary font-medium mb-3">EMR City</h4>
+        <p class="mb-2">Delivered analytical consulting across regional planning and development projects for government and institutional clients.</p>
+        <p class="mb-4">Across 7 engagements, I led structured analysis covering policy, market, and site conditions — combining stakeholder interviews, open data research, and visualization to turn complex findings into clear, decision-ready recommendations.</p>
+        <!-- Skill Tags -->
+        <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">Structured Analysis</span>
+            <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">Stakeholder Advisory</span>
+            <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">Policy Analysis</span>
+            <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">Market Research</span>
+        </div>
+    </div>
+</div>
+
+                </div>
+            </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold font-heading mb-12 text-center fade-in">Tools I Use</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+               <!-- Tool 1 -->
+                <div class="bg-white rounded-xl p-5 border border-gray-100 shadow-sm fade-in">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 flex items-center justify-center bg-light rounded-lg mr-3">
+                            <span class="text-xl font-bold text-[#000000]">N</span>
+                        </div>
+                        <h3 class="text-lg font-bold">NotebookLM</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">Go-to online research and note-taking RAG tool for quick learning and research, supporting documents (PDFs, Docs, Slides), websites, and audio.</p>
+                    <div class="flex items-center text-primary text-sm font-medium">
+                        <span>View</span>
+                        <i class="fa fa-arrow-right ml-2 text-xs"></i>
+                    </div>
+                </div>
+              
+               <!-- Tool 2 -->
+                
+                      <div class="bg-white rounded-xl p-5 border border-gray-100 shadow-sm fade-in">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 flex items-center justify-center bg-light rounded-lg mr-3">
+                            <span class="text-xl font-bold text-[#000000]">P</span>
+                        </div>
+                        <h3 class="text-lg font-bold">Perplexity</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">AI-powered conversational search engine that provides direct, cited answers to complex questions by synthesizing information from across the web.</p>
+                    <div class="flex items-center text-primary text-sm font-medium">
+                        <span>View</span>
+                        <i class="fa fa-arrow-right ml-2 text-xs"></i>
+                    </div>
+                </div>
+               
+                
+                <!-- Tool 3 -->
+                  <div class="bg-white rounded-xl p-5 border border-gray-100 shadow-sm fade-in">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 flex items-center justify-center bg-light rounded-lg mr-3">
+                            <span class="text-xl font-bold text-[#00C4CC]">C</span>
+                        </div>
+                        <h3 class="text-lg font-bold">Canva</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">Visual content creation platform with intuitive design tools for creating professional graphics, presentations, and social media content.</p>
+                    <div class="flex items-center text-primary text-sm font-medium">
+                        <span>View</span>
+                        <i class="fa fa-arrow-right ml-2 text-xs"></i>
+                    </div>
+                </div>
+                
+                <!-- Tool 4 -->
+               
+                   <div class="bg-white rounded-xl p-5 border border-gray-100 shadow-sm fade-in">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 flex items-center justify-center bg-light rounded-lg mr-3">
+                            <span class="text-xl font-bold text-[#FF5A5F]">W</span>
+                        </div>
+                        <h3 class="text-lg font-bold">Wanderlog</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">Travel planning &amp; itinerary tool that helps organize trips, create detailed itineraries, and discover new destinations.</p>
+                    <div class="flex items-center text-primary text-sm font-medium">
+                        <span>View</span>
+                        <i class="fa fa-arrow-right ml-2 text-xs"></i>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Exploring Section -->
+    <section id="exploring" class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold font-heading mb-12 text-center fade-in">Exploring AI Use </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="card bg-white rounded-xl shadow-card overflow-hidden fade-in">
+                    <img src="https://cdn.jsdelivr.net/gh/peuyy/my-image-hosting@main/20260506223042221.png" alt="Knowledge" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Knowledge</h3>
+                        <p class="text-gray-600">With working documents, I built a client call prep agent to help collect industry knowledge and client information to summarize key pitching points.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="card bg-white rounded-xl shadow-card overflow-hidden fade-in">
+                    <img src="https://cdn.jsdelivr.net/gh/peuyy/my-image-hosting@main/20260506215729272.png" alt="Creative" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Creative</h3>
+                        <p class="text-gray-600">I designed a fictional brand identity and social media launching plan for an Airbnb listing in 20 minutes using a combination of ChatGPT and Canva.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="card bg-white rounded-xl shadow-card overflow-hidden fade-in">
+                    <img src="https://cdn.jsdelivr.net/gh/peuyy/my-image-hosting@main/unknown.png" alt="Life" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Life</h3>
+                        <p class="text-gray-600">Leveraging AI assistant on Wanderlog, it saves me bunch of time to research and plan attractions in a new place. Love their route optimization feature too!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insights Section -->
+    <section id="insights" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold font-heading mb-12 text-center fade-in">Insights</h2>
+            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-card p-8 text-center fade-in">
+                <p class="text-xl text-gray-600 mb-6">Thoughts and reflections coming soon...</p>
+                <div class="flex justify-center">
+                    <button id="notify-button" class="bg-primary hover:bg-opacity-90 text-white font-medium py-2 px-6 rounded-lg transition-all-300">
+                        Notify Me When Ready
+                    </button>
+                </div>
+                <!-- Future Insights Structure (Commented)
+                <div class="insights-container mt-8 space-y-6">
+                    <!-- Insight Card Template
+                    <div class="insight-card border-b pb-6">
+                        <h3 class="text-xl font-bold mb-2">Title of Insight Article</h3>
+                        <p class="text-gray-600 mb-3">Brief description or excerpt from the article...</p>
+                        <a href="#" class="text-primary font-medium hover:underline">Read More</a>
+                    </div>
+                    -->
+                </div>
+                
+            </div>
+        
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold font-heading mb-6">Let's explore the future</h2>
+                <p class="text-lg mb-8">I'm always open to discussing new projects and opportunities to be part of your vision.</p>
+                <a href="mailto:pyji60@outlook.com" class="inline-block bg-primary hover:bg-opacity-90 text-white text-lg font-medium py-3 px-8 rounded-lg transition-all-300">
+                    pyji60@outlook.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Notification Modal -->
+    <div id="notification-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl p-6 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">Get Notified</h3>
+                <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+            <p class="mb-4">Enter your email to receive updates when new insights are published.</p>
+            <form id="notification-form" class="mb-4">
+                <div class="flex">
+                    <input type="email" placeholder="Your email address" class="flex-1 border border-gray-300 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                    <button type="submit" class="bg-primary text-white px-4 py-2 rounded-r-lg hover:bg-opacity-90">
+                        Subscribe
+                    </button>
+                </div>
+            </form>
+            <p class="text-sm text-gray-500">We respect your privacy and will never share your information.</p>
+        </div>
+    </div>
+
+    <!-- Success Notification -->
+    <div id="success-notification" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <div class="flex items-center">
+            <i class="fa fa-check-circle mr-2"></i>
+            <span>Successfully subscribed!</span>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a nav link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('shadow');
+            } else {
+                header.classList.remove('shadow');
+            }
+        });
+        
+        // Active nav link based on scroll position
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        // Initial check for elements in view
+        fadeInOnScroll();
+        
+        // Check on scroll
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // Modal functionality
+        const notifyButton = document.getElementById('notify-button');
+        const notificationModal = document.getElementById('notification-modal');
+        const closeModal = document.getElementById('close-modal');
+        const notificationForm = document.getElementById('notification-form');
+        const successNotification = document.getElementById('success-notification');
+        
+        notifyButton.addEventListener('click', () => {
+            notificationModal.classList.remove('hidden');
+        });
+        
+        closeModal.addEventListener('click', () => {
+            notificationModal.classList.add('hidden');
+        });
+        
+        // Close modal when clicking outside
+        notificationModal.addEventListener('click', (e) => {
+            if (e.target === notificationModal) {
+                notificationModal.classList.add('hidden');
+            }
+        });
+        
+        // Form submission
+        notificationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = notificationForm.querySelector('input[type="email"]');
+            
+            if (emailInput.value.trim() !== '') {
+                // Simulate form submission
+                notificationModal.classList.add('hidden');
+                
+                // Show success notification
+                successNotification.classList.remove('translate-y-20', 'opacity-0');
+                
+                // Hide success notification after 3 seconds
+                setTimeout(() => {
+                    successNotification.classList.add('translate-y-20', 'opacity-0');
+                }, 3000);
+                
+                // Reset form
+                notificationForm.reset();
+            }
+        });
+    </script>
+
+</body></html>
